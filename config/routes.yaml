@@ -19,5 +19,8 @@ añadir_producto:
     path: /añadir-producto
     controller: App\Controller\ProductoController::gestionProducto
     
+mostrar_carrito:
+    path: /mostrar-carrito
+    controller: App\Controller\CarritoController::mostrarCarrito
 logout:
     path: /logout

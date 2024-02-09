@@ -31,7 +31,7 @@ class CarritoController extends AbstractController
             }
         }
 
-        return $this->render('carrito/carrito.html.twig', [
+        return $this->render('carrito.html.twig', [
             'productos' => $productosEnCarrito,
         ]);
     }
