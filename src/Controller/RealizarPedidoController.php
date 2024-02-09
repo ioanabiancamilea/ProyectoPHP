@@ -1,6 +1,4 @@
 <?php
-// src/Controller/RealizarPedidoController.php
-
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,7 +15,7 @@ use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
 
-class RealizarPedido extends AbstractController
+class RealizarPedidoController extends AbstractController
 {
     /**
      * @Route("/realizarPedido", name="realizarPedido")
@@ -74,6 +72,10 @@ class RealizarPedido extends AbstractController
     
     // Redirecciona al usuario a la página que desees después de crear el pedido
     $session->set('carrito', []); // Limpiar el carrito después de realizar el pedido
-    return $this->redirectToRoute('pedido.html.twig');
+    return $this->render('pedido.html.twig', [
+        'pedido' => $pedido,
+        // Implementar logica de error si fuera necesario, ahora mismo cuando no hay elementos en el carrito se redirige a la página de mostrar carrito
+        'error' => 0,
+    ]);
     }
 }
