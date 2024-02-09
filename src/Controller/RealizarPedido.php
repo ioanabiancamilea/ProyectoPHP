@@ -73,7 +73,7 @@ class RealizarPedido extends AbstractController
     }
     
     // Redirecciona al usuario a la página que desees después de crear el pedido
-    return $this->redirectToRoute('pedido.html.twig');
     $session->set('carrito', []); // Limpiar el carrito después de realizar el pedido
+    return $this->redirectToRoute('pedido.html.twig');
     }
 }
