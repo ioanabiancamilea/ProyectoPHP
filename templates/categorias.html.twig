@@ -1,0 +1,17 @@
+{# templates/categorias.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Categorías{% endblock %}
+
+{% block contenido %}
+<h1>Lista de Categorías</h1>
+<ul>
+    {% for categoria in categorias %}
+        <li>
+            <a href="{{ path('productos', {'id': categoria.codCat}) }}">
+                {{ categoria.nombre }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,15 @@
+
+<nav>
+    <p>Usuario: {{ app.user.correo }}</p>
+    <ul>
+        <li><a href="{{ path('categorias') }}">Home</a></li>
+        <li><a href="{{ path('carrito') }}">Carrito</a></li>
+        {% if is_granted('ROLE_ADMIN') %}
+            <!-- Enlaces visibles solo para administradores -->
+           <li><a href="{{ path('añadir_categoria') }}">Añadir Categoría</a></li>
+<li><a href="{{ path('añadir_producto') }}">Añadir Producto</a></li>
+
+        {% endif %}
+        <li><a href="{{ path('logout') }}">Cerrar sesión</a></li>
+    </ul>
+</nav>

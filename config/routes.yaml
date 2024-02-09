@@ -1,0 +1,23 @@
+categorias:
+    path: /categorias
+    controller: App\Controller\CategoriaController::index
+
+login:
+    path: /login
+    controller: App\Controller\PedidosLogin::login
+
+realizar_pedido:
+    path: /realizarPedido
+    controller: App\Controller\RealizarPedidoController::realizarPedido
+
+añadir_categoria:
+    path: /añadir-categoria
+    controller: App\Controller\CategoriaController::añadirCategoria
+
+# config/routes.yaml
+añadir_producto:
+    path: /añadir-producto
+    controller: App\Controller\ProductoController::gestionProducto
+    
+logout:
+    path: /logout

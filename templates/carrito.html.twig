@@ -1,0 +1,49 @@
+{# templates/carrito.html.twig #}
+{% extends 'base.html.twig' %}
+{% block title %}Carrito de la compra{% endblock %}
+
+{% block contenido %}
+{{ dump(productos) }}
+    {% if productos is empty %}
+        <p>El carrito está vacío</p>
+    {% else %}
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Stock</th>
+                <th>Peso (Kg)</th>
+                <th>Cantidad</th>
+                <th>Acción</th>
+            </tr>
+           {% for prod in productos %}
+<tr>
+    <td>{{ prod.nombre }}</td>
+    <td>{{ prod.descripcion }}</td>
+    <td>{{ prod.stock }}</td>
+    <td>{{ prod.peso }}</td>
+    <td>
+        {# Verificar si 'unidades' es un array y acceder al valor correcto #}
+        {% if prod.unidades is iterable %}
+            {{ prod.unidades['unidades'] }}
+        {% else %}
+            {{ prod.unidades }}
+        {% endif %}
+    </td>
+    <td>
+        <form action="{{ path('eliminar') }}" method="POST">
+            <input name="unidades" type="number" min="1" value="1">
+            <input type="submit" value="Eliminar">
+            <input name="cod" type="hidden" value="{{ prod.codProd }}">
+        </form>
+    </td>
+</tr>
+{% endfor %}
+
+        </table>
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+    <a href="{{ path('realizarPedido') }}" class="btn btn-primary">Realizar Pedido</a>
+    {% endif %}
+{% endif %}
+   
+{% endblock %}
